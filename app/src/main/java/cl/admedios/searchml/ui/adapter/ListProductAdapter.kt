@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import cl.admedios.searchml.R
 import cl.admedios.searchml.databinding.ItemRowListBinding
+import cl.admedios.searchml.model.Result
 import cl.admedios.searchml.ui.detail.DetailActivity
 import cl.admedios.searchml.util.Constants
 import cl.admedios.searchml.util.DogListCallBack
 
 
-class ListDogAdapter(dogListCallBack: DogListCallBack, context: Context) :
-    RecyclerView.Adapter<ListDogAdapter.ProductViewHolder>() {
+class ListProductAdapter(dogListCallBack: DogListCallBack, context: Context) :
+    RecyclerView.Adapter<ListProductAdapter.ProductViewHolder>() {
 
     //*** start declare promotion contenful
    /* val vault: Vault = Vault.with(context, ContenfulSpace::class.java)
@@ -27,13 +28,13 @@ class ListDogAdapter(dogListCallBack: DogListCallBack, context: Context) :
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<String>() {
+    private val differCallback = object : DiffUtil.ItemCallback<Result>() {
 
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
             return oldItem == newItem
         }
     }
@@ -55,13 +56,13 @@ class ListDogAdapter(dogListCallBack: DogListCallBack, context: Context) :
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val dog = differ.currentList[position]
+        val product = differ.currentList[position]
         holder.itemView.apply {
             val binding = ItemRowListBinding.bind(this)
-            binding.tvTitleProduct.text = dog.toString().toUpperCase()
+            binding.tvTitleProduct.text = product.title
             binding.cardViewItem.setOnClickListener {
                 val intent = Intent(context, DetailActivity::class.java)
-                intent.putExtra(Constants.DOG_NAME,dog)
+                intent.putExtra(Constants.PRODUCT_NAME,product)
                 context.startActivity(intent)
             }
         }

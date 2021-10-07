@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:indeterminateOnly="true"
-        android:indeterminateTint="@color/WOM_PRINCIPAL"
+        android:indeterminateTint="@color/ML_PRINCIPAL"
         android:scaleY="3" />
 </RelativeLayout>

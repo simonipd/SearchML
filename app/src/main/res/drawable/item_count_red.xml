@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners
+            android:radius="@dimen/dimen_cart_radius"/>
+    <solid
+            android:color="@color/ML_RED" />
+    <stroke
+            android:width="0dip"
+            android:color="#FFF" />
+    <padding
+            android:left="2dip"
+            android:right="2dip"
+            android:top="2dip"
+            android:bottom="2dip" />
+</shape>

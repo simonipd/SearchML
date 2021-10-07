@@ -8,8 +8,12 @@ object Constants {
     const val contentTypeHeader = "Content-Type"
 
     //Variable
-    const val BASE_URL = "https://dog.ceo/api/"
+    const val BASE_URL = "https://api.mercadolibre.com/sites/"
 
     //Bundle
-    const val DOG_NAME = "DOG_NAME"
+    const val PRODUCT_NAME = "PRODUCT_NAME"
+
+    //
+    const val SITE_ID = "MLC"
+    const val LIMIT = "10"
 }

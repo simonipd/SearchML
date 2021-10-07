@@ -2,35 +2,36 @@ package cl.admedios.searchml.ui.detail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cl.admedios.searchml.R
 import cl.admedios.searchml.databinding.ActivityDetailBinding
-import cl.admedios.searchml.ui.adapter.ListImagenDogAdapter
+import cl.admedios.searchml.model.Result
+import cl.admedios.searchml.ui.adapter.ListImagenAdapter
+import cl.admedios.searchml.util.AppLogger
 import cl.admedios.searchml.util.Constants
 import cl.admedios.searchml.util.DogListCallBack
 
 class DetailActivity : AppCompatActivity(), DogListCallBack {
     lateinit var binding: ActivityDetailBinding
-    lateinit var viewModel: DetailViewModel
+    //lateinit var viewModel: DetailViewModel
     lateinit var recyclerView: RecyclerView
-    var listImageDogAdapter: ListImagenDogAdapter? = null
-    var dogName: String? = null
+    var listImageDogAdapter: ListImagenAdapter? = null
+    var productName: Result? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         var view = binding.root
-        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setInit()
         setContentView(view)
     }
 
     private fun setInit() {
-        dogName = intent.getStringExtra(Constants.DOG_NAME) ?: ""
+        productName = intent.getParcelableExtra(Constants.PRODUCT_NAME) as Result?
+        AppLogger.i("pasebundle", "si pasa el bundle "+productName)
         supportActionBar?.setTitle(R.string.text_title_detail)
         setupRecyclerView()
         setObserverList()
@@ -38,11 +39,11 @@ class DetailActivity : AppCompatActivity(), DogListCallBack {
     }
 
     private fun setCall() {
-        if (dogName != null) viewModel.makeApiCallGetDogImageList(this, dogName!!)
+        //if (dogName != null) viewModel.makeApiCallGetDogImageList(this, dogName!!)
     }
 
     private fun setupRecyclerView() {
-        listImageDogAdapter = ListImagenDogAdapter(this, binding.root.context)
+        listImageDogAdapter = ListImagenAdapter(this, binding.root.context)
         binding.recyclerViewImagenList.apply {
             adapter = listImageDogAdapter
             layoutManager = LinearLayoutManager(
@@ -55,10 +56,10 @@ class DetailActivity : AppCompatActivity(), DogListCallBack {
     }
 
     private fun setObserverList() {
-        viewModel.getDogListDataObserver().observe(this, Observer {
+       /* viewModel.getDogListDataObserver().observe(this, Observer {
             listImageDogAdapter!!.differ.submitList(it.message.toList())
             binding.tvName.text = dogName!!.toUpperCase()
-        })
+        })*/
     }
 
     override fun onSupportNavigateUp(): Boolean {

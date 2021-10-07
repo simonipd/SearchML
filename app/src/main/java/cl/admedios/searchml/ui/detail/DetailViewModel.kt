@@ -3,13 +3,13 @@ package cl.admedios.searchml.ui.detail
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import cl.admedios.searchml.model.DogAPIResponse
 import cl.smu.unimarcapp.data.netwok.api.RetroInstance
 import cl.smu.unimarcapp.data.netwok.api.RetroService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/*
 class DetailViewModel : ViewModel() {
 
     var dogImageList: MutableLiveData<DogAPIResponse> = MutableLiveData()
@@ -48,4 +48,4 @@ class DetailViewModel : ViewModel() {
             }
         })
     }
-}
+}*/

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="0dp"
+    app:elevation="0dp"
+    tools:targetApi="lollipop">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ML_PRINCIPAL"
+        android:elevation="0dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:weightSum="1"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:elevation="0dp"
+        app:queryBackground="@android:color/transparent"
+        app:title=" ">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchBoxId"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_12"
+                android:background="@drawable/layout_borde_search"
+                android:drawableStart="@drawable/ic_baseline_search_gris_24"
+                android:fontFamily="sans-serif"
+                app:queryHint="@string/search_text"
+                app:defaultQueryHint="@string/search_text"
+                android:textColor="@color/ML_GRAY_DARK"
+                android:textCursorDrawable="@null"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:closeIcon="@drawable/ic_icon_close_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/icon_cart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@android:color/transparent"
+                app:searchHintIcon="@null" />
+
+            <TextView
+                android:id="@+id/searchBoxText"
+                android:layout_width="0dp"
+                android:layout_height="34dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/ML_GRAY_TEXT"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dimen_45"
+                android:paddingEnd="@dimen/dimen_4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/icon_cart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/icon_cart"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/ic_icon_cart"
+                app:actionViewClass="androidx.appcompat.widget.SearchView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:showAsAction="always" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="23dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/icon_cart"
+                android:background="@drawable/item_count_red"
+                android:gravity="center"
+                android:text="99"
+                android:textColor="#FFF"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="@color/ML_WHITE" />
+
+</com.google.android.material.appbar.AppBarLayout>

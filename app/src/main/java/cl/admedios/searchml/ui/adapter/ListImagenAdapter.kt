@@ -14,8 +14,8 @@ import cl.admedios.searchml.util.DogListCallBack
 import com.bumptech.glide.Glide
 
 
-class ListImagenDogAdapter(dogListCallBack: DogListCallBack, context: Context) :
-    RecyclerView.Adapter<ListImagenDogAdapter.ProductViewHolder>() {
+class ListImagenAdapter(dogListCallBack: DogListCallBack, context: Context) :
+    RecyclerView.Adapter<ListImagenAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
