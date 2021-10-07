@@ -14,11 +14,5 @@ interface RetroService {
         @Query("q") search: String,
         @Query("limit") limit: String
     ): Response<ResponseSearch>
-
-    //*** Product *** get detail ***//
-/*    @GET("breed/{breedName}/images")
-    fun getDogImages(
-            @Path("breedName") breedName: String
-    ): Call<DogAPIResponse>*/
 }
 

@@ -15,7 +15,7 @@ data class ResponseSearch (
 
         val query: String,
         val paging: Paging,
-        val results: MutableList<Result>,
+        val results: MutableList<ResultData>,
         val sort: Sort,
 
         @SerializedName("available_sorts")
@@ -59,7 +59,7 @@ data class Paging (
 ): Parcelable
 
 @Parcelize
-data class Result (
+data class ResultData (
         val id: String,
 
         @SerializedName("site_id")

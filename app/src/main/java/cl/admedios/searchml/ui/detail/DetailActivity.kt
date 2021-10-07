@@ -1,65 +1,62 @@
 package cl.admedios.searchml.ui.detail
 
+import android.graphics.Paint
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProvider
 import cl.admedios.searchml.R
 import cl.admedios.searchml.databinding.ActivityDetailBinding
-import cl.admedios.searchml.model.Result
-import cl.admedios.searchml.ui.adapter.ListImagenAdapter
+import cl.admedios.searchml.model.ResultData
 import cl.admedios.searchml.util.AppLogger
 import cl.admedios.searchml.util.Constants
-import cl.admedios.searchml.util.DogListCallBack
+import cl.admedios.searchml.util.ProductListCallBack
+import cl.admedios.searchml.util.FunctionsUtils
+import com.bumptech.glide.Glide
 
-class DetailActivity : AppCompatActivity(), DogListCallBack {
+class DetailActivity : AppCompatActivity(), ProductListCallBack {
     lateinit var binding: ActivityDetailBinding
-    //lateinit var viewModel: DetailViewModel
-    lateinit var recyclerView: RecyclerView
-    var listImageDogAdapter: ListImagenAdapter? = null
-    var productName: Result? = null
+    lateinit var viewModel: DetailViewModel
+    var productName: ResultData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         var view = binding.root
-        //viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setInit()
         setContentView(view)
     }
 
     private fun setInit() {
-        productName = intent.getParcelableExtra(Constants.PRODUCT_NAME) as Result?
-        AppLogger.i("pasebundle", "si pasa el bundle "+productName)
+        productName = intent.getParcelableExtra(Constants.PRODUCT_NAME) as ResultData?
+        AppLogger.i("bundle", "bundle -->" + productName)
         supportActionBar?.setTitle(R.string.text_title_detail)
-        setupRecyclerView()
-        setObserverList()
-        setCall()
+        viewModel.result = productName
+        setObserverData()
     }
 
-    private fun setCall() {
-        //if (dogName != null) viewModel.makeApiCallGetDogImageList(this, dogName!!)
-    }
-
-    private fun setupRecyclerView() {
-        listImageDogAdapter = ListImagenAdapter(this, binding.root.context)
-        binding.recyclerViewImagenList.apply {
-            adapter = listImageDogAdapter
-            layoutManager = LinearLayoutManager(
-                context,
-                RecyclerView.HORIZONTAL,
-                false
-            )
-            isNestedScrollingEnabled = false
+    private fun setObserverData() {
+        binding.tvStatus.text = if (viewModel.result!!.condition.equals("new")) "Nuevo" else "Usado"
+        binding.tvName.text = viewModel.result!!.title
+        binding.tvBrand.text = viewModel.result!!.attributes[0].valueName
+        binding.tvPrice.text =
+            "$ ${FunctionsUtils.numberFormatLong(viewModel.result!!.price.toLong())}"
+        if (viewModel.result!!.originalPrice.toInt() == 0) {
+            binding.tvLastprice.visibility = View.GONE
+        } else {
+            binding.tvLastprice.text =
+                "$ ${FunctionsUtils.numberFormatLong(viewModel.result!!.originalPrice).toString()}"
+            binding.tvLastprice.paintFlags =
+                binding.tvLastprice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG
         }
-    }
-
-    private fun setObserverList() {
-       /* viewModel.getDogListDataObserver().observe(this, Observer {
-            listImageDogAdapter!!.differ.submitList(it.message.toList())
-            binding.tvName.text = dogName!!.toUpperCase()
-        })*/
+        Glide.with(this)
+            .load(viewModel.result!!.thumbnail)
+            .placeholder(R.drawable.default_thumb)
+            .error(R.drawable.default_thumb)
+            .fallback(R.drawable.default_thumb)
+            .into(binding.imgProduct)
     }
 
     override fun onSupportNavigateUp(): Boolean {

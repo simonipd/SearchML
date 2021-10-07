@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import cl.admedios.searchml.R
 import cl.admedios.searchml.databinding.ItemRowDetailBinding
-import cl.admedios.searchml.util.DogListCallBack
+import cl.admedios.searchml.util.ProductListCallBack
 import com.bumptech.glide.Glide
 
 
-class ListImagenAdapter(dogListCallBack: DogListCallBack, context: Context) :
+class ListImagenAdapter(dogListCallBack: ProductListCallBack, context: Context) :
     RecyclerView.Adapter<ListImagenAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

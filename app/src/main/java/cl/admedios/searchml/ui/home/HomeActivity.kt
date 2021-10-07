@@ -5,20 +5,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cl.admedios.searchml.R
 import cl.admedios.searchml.databinding.ActivityHomeBinding
 import cl.admedios.searchml.ui.adapter.ListProductAdapter
-import cl.admedios.searchml.util.DogListCallBack
+import cl.admedios.searchml.util.ProductListCallBack
 import cl.admedios.searchml.util.Resource
 
-class HomeActivity : AppCompatActivity(), DogListCallBack {
+class HomeActivity : AppCompatActivity(), ProductListCallBack {
     lateinit var binding: ActivityHomeBinding
     lateinit var viewModel: HomeViewModel
-    lateinit var recyclerView: RecyclerView
     var listDogAdapter: ListProductAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,12 +42,6 @@ class HomeActivity : AppCompatActivity(), DogListCallBack {
             layoutManager = GridLayoutManager(binding.root.context, 1)
             isNestedScrollingEnabled = false
         }
-        /*binding.recyclerViewDogList.addItemDecoration(
-            DividerItemDecoration(
-                binding.root.context,
-                LinearLayoutManager.VERTICAL
-            )
-        )*/
     }
 
     private fun setObserverList() {
@@ -82,22 +73,16 @@ class HomeActivity : AppCompatActivity(), DogListCallBack {
 
 
     private fun setInitSearch() {
-        //binding.componentSearchResult.root.visibility = View.VISIBLE
         binding.appBarSearch.searchBoxId.onActionViewExpanded()
         binding.appBarSearch.searchBoxId.performClick()
         binding.appBarSearch.searchBoxId.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //queryName = query.toString()
-                //loadResultData(query)
-                //query?.let { searchSave(it) }
                 viewModel.makeApiCallListSearch(binding.root.context, query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                /*queryName = newText.toString()
-                loadResultData(newText)*/
                 viewModel.makeApiCallListSearch(binding.root.context, newText)
                 return false
             }

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import cl.admedios.searchml.model.ResponseSearch
-import cl.admedios.searchml.model.Result
+import cl.admedios.searchml.model.ResultData
 import cl.admedios.searchml.network.RetrofitInstance
 import cl.admedios.searchml.util.Constants
 import cl.admedios.searchml.util.Resource
@@ -16,7 +16,7 @@ import retrofit2.Response
 class HomeViewModel : ViewModel() {
 
     var productList: MutableLiveData<Resource<ResponseSearch>> = MutableLiveData()
-    var apiProductResponse: MutableList<Result>? = null
+    var apiProductResponse: MutableList<ResultData>? = null
 
     fun makeApiCallListSearch(context: Context, search: String?="") =
         viewModelScope.launch {

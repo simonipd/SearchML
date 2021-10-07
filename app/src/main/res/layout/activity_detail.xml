@@ -7,32 +7,17 @@
     android:padding="10dp"
     tools:context=".ui.detail.DetailActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_imagen_list"
+
+    <ImageView
+        android:id="@+id/imgProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen_8"
         android:layout_weight="1"
-        android:nestedScrollingEnabled="false"
-        android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBrand" />
-
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/text_loading"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recycler_view_imagen_list"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBrand"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvStatus"
@@ -43,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvNameProduct"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre de producto"
@@ -59,7 +44,7 @@
         android:text="Marca"
         android:layout_marginTop="@dimen/dimen_4"
         app:layout_constraintStart_toStartOf="@+id/tvStatus"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameProduct" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/tvCountSales"
@@ -74,9 +59,10 @@
         android:id="@+id/tvLastprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_20"
         android:text="Precio anterior"
-        app:layout_constraintStart_toStartOf="@+id/tvName"
-        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+        app:layout_constraintStart_toStartOf="@+id/imgProduct"
+        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
 
     <TextView
         android:id="@+id/tvPrice"
@@ -86,5 +72,17 @@
         android:textSize="@dimen/dimen_20"
         app:layout_constraintStart_toStartOf="@+id/tvLastprice"
         app:layout_constraintTop_toBottomOf="@+id/tvLastprice" />
+
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_borde"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:text="Comprar"
+        app:layout_constraintEnd_toEndOf="@+id/imgProduct"
+        app:layout_constraintStart_toStartOf="@+id/tvPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

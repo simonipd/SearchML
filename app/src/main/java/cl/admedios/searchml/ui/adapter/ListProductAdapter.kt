@@ -11,30 +11,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import cl.admedios.searchml.R
 import cl.admedios.searchml.databinding.ItemRowListBinding
-import cl.admedios.searchml.model.Result
+import cl.admedios.searchml.model.ResultData
 import cl.admedios.searchml.ui.detail.DetailActivity
 import cl.admedios.searchml.util.Constants
-import cl.admedios.searchml.util.DogListCallBack
+import cl.admedios.searchml.util.ProductListCallBack
 
 
-class ListProductAdapter(dogListCallBack: DogListCallBack, context: Context) :
+class ListProductAdapter(productListCallBack: ProductListCallBack, context: Context) :
     RecyclerView.Adapter<ListProductAdapter.ProductViewHolder>() {
-
-    //*** start declare promotion contenful
-   /* val vault: Vault = Vault.with(context, ContenfulSpace::class.java)
-    private val promotions = vault.fetch(CampaignsConfiguration::class.java).all()*/
-    //*** end declare promotion contenful
-
 
     inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<Result>() {
+    private val differCallback = object : DiffUtil.ItemCallback<ResultData>() {
 
-        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areItemsTheSame(oldItem: ResultData, newItem: ResultData): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
+        override fun areContentsTheSame(oldItem: ResultData, newItem: ResultData): Boolean {
             return oldItem == newItem
         }
     }

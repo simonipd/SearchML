@@ -39,14 +39,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             debuggable false
             signingConfig signingConfigs.release
-            buildConfigField "String", 'BASE_URL', '"https://dog.ceo/dog-api/"'
+            buildConfigField "String", 'BASE_URL', '"https://api.mercadolibre.com/sites/"'
         }
         debug {
             applicationIdSuffix ".debug"
             versionNameSuffix ".Dev"
             debuggable true
             signingConfig signingConfigs.debug
-            buildConfigField "String", 'BASE_URL', '"https://dog.ceo/dog-api/"'
+            buildConfigField "String", 'BASE_URL', '"https://api.mercadolibre.com/sites/"'
         }
     }
     compileOptions {

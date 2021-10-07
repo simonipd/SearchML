@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="50dp"
     android:layout_marginEnd="50dp"
-    android:visibility="visible">
+    android:visibility="gone">
 
     <ProgressBar
         style="?android:attr/progressBarStyle"
@@ -13,5 +13,5 @@
         android:layout_centerInParent="true"
         android:indeterminateOnly="true"
         android:indeterminateTint="@color/ML_PRINCIPAL"
-        android:scaleY="3" />
+        android:scaleY="1" />
 </RelativeLayout>
