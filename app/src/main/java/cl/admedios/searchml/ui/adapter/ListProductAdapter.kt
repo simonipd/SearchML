@@ -60,7 +60,7 @@ class ListProductAdapter(dogListCallBack: DogListCallBack, context: Context) :
         holder.itemView.apply {
             val binding = ItemRowListBinding.bind(this)
             binding.tvTitleProduct.text = product.title
-            binding.cardViewItem.setOnClickListener {
+            binding.llItem.setOnClickListener {
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra(Constants.PRODUCT_NAME,product)
                 context.startActivity(intent)

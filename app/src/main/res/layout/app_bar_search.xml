@@ -43,7 +43,7 @@
                 android:textCursorDrawable="@null"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                app:closeIcon="@drawable/ic_icon_close_search"
+                app:closeIcon="@drawable/ic_baseline_close_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/icon_cart"
                 app:layout_constraintStart_toStartOf="parent"

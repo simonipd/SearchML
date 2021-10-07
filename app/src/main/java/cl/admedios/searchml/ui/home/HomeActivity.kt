@@ -45,12 +45,12 @@ class HomeActivity : AppCompatActivity(), DogListCallBack {
             layoutManager = GridLayoutManager(binding.root.context, 1)
             isNestedScrollingEnabled = false
         }
-        binding.recyclerViewDogList.addItemDecoration(
+        /*binding.recyclerViewDogList.addItemDecoration(
             DividerItemDecoration(
                 binding.root.context,
                 LinearLayoutManager.VERTICAL
             )
-        )
+        )*/
     }
 
     private fun setObserverList() {

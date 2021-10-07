@@ -122,7 +122,7 @@ data class Result (
         val domainID: String,
 
         @SerializedName("catalog_product_id")
-        val catalogProductID: String,
+        val catalogProductID: String?,
 
         val tags: List<String>,
 
